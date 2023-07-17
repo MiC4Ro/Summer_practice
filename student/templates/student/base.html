@@ -1,0 +1,12 @@
+{% extends 'student/layout.html' %}
+
+{% block title %}Мои программы{% endblock %}
+
+{% block body %}
+    <h1 class="students_programms">Список программ:</h1><br>
+    <ul>
+        {% for i in a %}
+            <a href="/student/"><li><button class="btn btn-info">{{ i }}</button></li></a>
+        {% endfor %}
+    </ul>
+{% endblock %}

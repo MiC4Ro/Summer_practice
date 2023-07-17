@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+def base(request):
+    students_programms = {
+        'a': ['Алгоритмы и структуры данных', '2']
+    }
+    return render(request, 'student/base.html', students_programms)
