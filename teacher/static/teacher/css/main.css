@@ -1,0 +1,30 @@
+body {
+    background: white
+}
+
+aside {
+    float: left;
+    background: gray;
+    width: 5%;
+    padding: 2.5%;
+    height: 100vh;
+    color: black;
+    margin-left: -50px;
+    margin-top: -10px;
+}
+
+aside ul {list-style: none}
+aside ul li {
+    color: #fff;
+    display: block;
+    margin-top: 20px;
+    transition: transform .6s;
+}
+
+aside ul li:hover, aside ul a:hover {
+    color: #eb5959;
+    text-decoration: none;
+    transform: scale(1.5);
+}
+
+aside a {text-decoration: none;}
