@@ -9,6 +9,9 @@ class Quiz(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return f'/creator/tests/{self.id}'
+
     class Meta:
         ordering = ['published']
         verbose_name = 'Тест'
@@ -44,6 +47,9 @@ class Question(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return f'/creator/tests/answers/{self.id}'
+
     class Meta:
         ordering = ['id']
         verbose_name = 'Вопрос'
@@ -56,6 +62,9 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return f'/creator/tests/answers/{self.id}'
 
     class Meta:
         verbose_name = 'Ответ'

@@ -1,0 +1,11 @@
+{% extends 'creator/layout.html' %}
+
+{% block title %}Удаление ответа{% endblock %}
+
+{% block body %}
+<h2>Вы уверены, что хотите удалить ответ "{{ answer.name }}"?</h2>
+<form method="post">
+    {% csrf_token %}
+    <button>Удалить</button>
+</form>
+{% endblock %}

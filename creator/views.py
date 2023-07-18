@@ -4,17 +4,15 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import F
 from .models import Quiz, Question, Answer, Choice, Result
 from .forms import QuizForm, QuestionForm, AnswerForm
-from django.views.generic import DetailView
+from django.views.generic import DetailView, UpdateView, DeleteView
 
 
 
-#@login_required
 def quizzes(request):
     quizzes = Quiz.objects.all()
     context = {'quizzes': quizzes}
     return render(request, 'creator/base.html', context)
 
-#@login_required
 def display_quiz(request, quiz_id):
     quiz = get_object_or_404(Quiz, pk=quiz_id)
     question = quiz.question_set.first()
@@ -22,7 +20,6 @@ def display_quiz(request, quiz_id):
         kwargs={'quiz_id': quiz_id, 
         'question_id': question.pk}))
 
-#@login_required
 def display_question(request, quiz_id, question_id):
     quiz = get_object_or_404(Quiz, pk=quiz_id)
     questions = quiz.question_set.all()
@@ -38,7 +35,6 @@ def display_question(request, quiz_id, question_id):
     return render(request,
         'creator/base.html',context)
 
-#@login_required
 def grade_question(request, quiz_id, question_id):
     question = get_object_or_404(Question, pk=question_id)
     quiz = get_object_or_404(Quiz, pk=quiz_id)
@@ -94,7 +90,6 @@ def grade_question(request, quiz_id, question_id):
             'correct_answer': correct_answer, 
             'question': question})
 
-#@login_required
 def quiz_results(request, quiz_id):
     quiz = get_object_or_404(Quiz, pk=quiz_id)
     questions = quiz.question_set.all()
@@ -171,3 +166,37 @@ class QustionDetailView(DetailView):
     answers = Answer.objects.all()
     context_object_name = 'question'
     extra_context = {'answers': answers}
+
+class TestUpdateView(UpdateView):
+    model = Quiz
+    template_name = 'creator/update-test.html'
+    fields = ['name']
+
+class QuestionUpdateView(UpdateView):
+    model = Question
+    template_name = 'creator/update-question.html'
+    fields = ['name', 'qtype', 'explanation', 'quiz']
+
+class AnswerUpdateView(UpdateView):
+    model = Answer
+    template_name = 'creator/update-answer.html'
+    context_object_name = 'answer'
+    fields = ['name', 'is_correct', 'question']
+
+class TestDeleteView(DeleteView):
+    model = Quiz
+    success_url = '/creator/tests'
+    template_name = 'creator/delete-test.html'
+    context_object_name = 'quiz'
+
+class QuestionDeleteView(DeleteView):
+    model = Question
+    success_url = '/creator/tests'
+    template_name = 'creator/delete-question.html'
+    context_object_name = 'question'
+
+class AnswerDeleteView(DeleteView):
+    model = Answer
+    success_url = '/creator/tests'
+    template_name = 'creator/delete-answer.html'
+    context_object_name = 'answer'
