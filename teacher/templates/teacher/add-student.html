@@ -1,4 +1,4 @@
-{% extends 'teacher/layout.html' %}
+{% extends 'creator/layout.html' %}
 
 
 {% block title %}{{ title }}{% endblock %}
@@ -7,8 +7,8 @@
 {% block body %}
 <form method="post">
     {% csrf_token %}
-    {{ form }}
-    <button>создать студента</button>
+    {{form.as_p}}
+    <input class="btn btn-success" type="submit" value="Register Account">
     <span>{{ error }}</span>
 </form>
 {% endblock %}
