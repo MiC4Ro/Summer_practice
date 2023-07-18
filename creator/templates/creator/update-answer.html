@@ -1,0 +1,13 @@
+{% extends 'creator/layout.html' %}
+
+{% block title %}Редактирование ответа{% endblock %}
+
+{% block body %}
+<h2>Редактирование ответа</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button>Применить изменения</button>
+    <span>{{ error }}</span>
+</form>
+{% endblock %}

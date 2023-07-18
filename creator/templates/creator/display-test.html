@@ -1,11 +1,12 @@
-{% extends 'student/layout.html' %}
+{% extends 'creator/layout.html' %}
 
 {% block title %}Тесты{% endblock %}
 
 {% block body %}
     <div>
-        <h1>{{ quiz.name }}</h1>
-        <a href="{% url 'add-question' %}"><button class="btn btn-danger">Добавить ответ</button></a>
+        <h1>{{ quiz.name }}
+        <a href="/creator/tests/{{ quiz.id }}/update"><button class="btn btn-warning">Изменить название</button></a><br></h1>
+        <a href="{% url 'add-question' %}"><button class="btn btn-info">Добавить вопрос</button></a>
         <div>
             {% for i in questions %}
             {% if quiz.id == i.quiz_id %}
@@ -19,4 +20,5 @@
     <button class="btn btn-light">
         <a href="{% url 'test-lib' %}"><h2>Вернуться к тестам</h2></a>
     </button>
+    <br><br><a href="/creator/tests/{{ quiz.id }}/delete"><button class="btn btn-danger">Удалить тест</button></a>
 {% endblock %}

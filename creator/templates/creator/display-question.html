@@ -3,15 +3,19 @@
 {% block title %}Тесты{% endblock %}
 
 {% block body %}
-    <h1>{{ question.name }}</h1>
+    <h1>{{ question.name }}
+    <a href="/creator/tests/answers/{{ question.id }}/update"><button class="btn btn-warning">Изменить название</button></a></h1>
     <ul>
         {% for i in answers %}
         {% if question.id == i.question_id %}
-            <h2>{{ i.name }}    {% if i.is_correct %} (Верно) {% else %} (Неверно) {% endif %}</h2>
+            <h2>{{ i.name }}    {% if i.is_correct %} (Верно) {% else %} (Неверно) {% endif %}
+            <a href="/creator/tests/answer/{{ i.id }}/update"><button class="btn btn-warning">Редактировать ответ</button></a>
+            <a href="/creator/tests/answer/{{ i.id }}/delete"><button class="btn btn-danger">Удалить ответ</button></a></h2>
         {% endif %}
         {% endfor %}
     </ul>
     <button class="btn btn-light">
         <a href="{% url 'test-lib' %}"><h2>Вернуться к тестам</h2></a>
     </button>
+    <br><br><a href="/creator/tests/answers/{{ question.id }}/delete"><button class="btn btn-danger">Удалить вопрос</button></a>
 {% endblock %}
