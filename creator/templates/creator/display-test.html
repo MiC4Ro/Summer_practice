@@ -1,6 +1,6 @@
 {% extends 'student/layout.html' %}
 
-{% block title %}Мои программы{% endblock %}
+{% block title %}Тесты{% endblock %}
 
 {% block body %}
     <div>
@@ -10,7 +10,7 @@
             {% for i in questions %}
             {% if quiz.id == i.quiz_id %}
             <button class="btn btn-info">
-                <a href="{% url 'add-answer' %}"><h2>{{ i.name }}</h2></a>
+                <a href="answers/{{ i.id }}"><h2>{{ i.name }}</h2></a>
             </button>
             {% endif %}
         {% endfor %}

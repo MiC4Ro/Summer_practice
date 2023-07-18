@@ -1,0 +1,14 @@
+{% extends 'creator/layout.html' %}
+
+{% block title %}Тесты{% endblock %}
+
+{% block body %}
+    <h1>{{ question.name }}</h1>
+    <ul>
+        {% for i in answers %}
+        {% if question.id == i.question_id %}
+            <h2>{{ i.name }}    {% if i.is_correct %} (Верно) {% else %} (Неверно) {% endif %}</h2>
+        {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}

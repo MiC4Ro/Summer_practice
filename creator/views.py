@@ -164,3 +164,10 @@ class TestDetailView(DetailView):
     questions = Question.objects.all()
     context_object_name = 'quiz'
     extra_context = {'questions': questions}
+
+class QustionDetailView(DetailView):
+    model = Question
+    template_name = 'creator/display-question.html'
+    answers = Answer.objects.all()
+    context_object_name = 'question'
+    extra_context = {'answers': answers}
