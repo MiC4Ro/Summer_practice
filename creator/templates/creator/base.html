@@ -4,11 +4,11 @@
 
 {% block body %}
     <h1>Тесты</h1>
-    <button class="btn btn-danger">Добавить тест</button>
+    <a href="{% url 'add-test' %}"><button class="btn btn-danger">Добавить тест</button></a>
 
     {% for quiz in quizzes %}
         <button class="btn btn-info">
-            <h2>{{ quiz.name }}</h2>
+            <a href="{% url '' %}"><h2>{{ quiz.name }}</h2></a>
         </button>
     {% endfor %}
 {% endblock %}

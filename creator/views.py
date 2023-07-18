@@ -3,15 +3,18 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.db.models import F
 from .models import Quiz, Question, Answer, Choice, Result
+from .forms import QuizForm, QuestionForm, AnswerForm
+from django.views.generic import DetailView
 
-@login_required
+
+
+#@login_required
 def quizzes(request):
     quizzes = Quiz.objects.all()
     context = {'quizzes': quizzes}
-    return render(request, 
-        'creator/base.html', context)
+    return render(request, 'creator/base.html', context)
 
-@login_required
+#@login_required
 def display_quiz(request, quiz_id):
     quiz = get_object_or_404(Quiz, pk=quiz_id)
     question = quiz.question_set.first()
@@ -19,7 +22,7 @@ def display_quiz(request, quiz_id):
         kwargs={'quiz_id': quiz_id, 
         'question_id': question.pk}))
 
-@login_required
+#@login_required
 def display_question(request, quiz_id, question_id):
     quiz = get_object_or_404(Quiz, pk=quiz_id)
     questions = quiz.question_set.all()
@@ -35,7 +38,7 @@ def display_question(request, quiz_id, question_id):
     return render(request,
         'creator/base.html',context)
 
-@login_required
+#@login_required
 def grade_question(request, quiz_id, question_id):
     question = get_object_or_404(Question, pk=question_id)
     quiz = get_object_or_404(Quiz, pk=quiz_id)
@@ -91,7 +94,7 @@ def grade_question(request, quiz_id, question_id):
             'correct_answer': correct_answer, 
             'question': question})
 
-@login_required
+#@login_required
 def quiz_results(request, quiz_id):
     quiz = get_object_or_404(Quiz, pk=quiz_id)
     questions = quiz.question_set.all()
@@ -106,3 +109,56 @@ def quiz_results(request, quiz_id):
     'skipped': len(questions) - (correct + wrong)}
     return render(request, 
         'creator/base.html', context)
+
+def create_quiz(request):
+    error = ''
+    if request.method == "POST":
+        form = QuizForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('test-lib')
+        else:
+            error = "Форма заполнено неверно."
+    form = QuizForm()
+    data = {
+        'form':form,
+        'error':error
+    }
+    return render(request, 'creator/add-test.html', data)
+
+def create_question(request):
+    error = ''
+    if request.method == "POST":
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('add-test')
+        else:
+            error = "Форма заполнено неверно."
+    form = QuestionForm()
+    data = {
+        'form':form,
+        'error':error
+    }
+    return render(request, 'creator/add-question.html', data)
+
+def create_answer(request):
+    error = ''
+    if request.method == "POST":
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('add-question')
+        else:
+            error = "Форма заполнено неверно."
+    form = AnswerForm()
+    data = {
+        'form':form,
+        'error':error
+    }
+    return render(request, 'creator/add-answer.html', data)
+
+class TestDetailView(DetailView):
+    model = Quiz
+    template_name = 'creator/display-test.html'
+    context_object_name = 'quiz'
