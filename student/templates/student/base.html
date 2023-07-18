@@ -1,0 +1,13 @@
+{% extends 'student/layout.html' %}
+
+{% block title %}Тесты{% endblock %}
+
+{% block body %}
+    <h1>Тесты</h1>
+
+    {% for quiz in quizzes %}
+        <button class="btn btn-info">
+            <a href="{{ quiz.id }}"><h2>{{ quiz.name }}</h2></a>
+        </button>
+    {% endfor %}
+{% endblock %}

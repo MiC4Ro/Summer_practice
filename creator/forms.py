@@ -16,6 +16,3 @@ class AnswerForm(ModelForm):
     class Meta:
         model = Answer
         fields = ['name', 'is_correct', 'question']
-
-#класс студенты = модел
-# создать много классов для каждой модели.

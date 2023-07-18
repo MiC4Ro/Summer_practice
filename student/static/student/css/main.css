@@ -5,6 +5,7 @@ body {
 body h1 {
     font-size: 40px;
     margin-left: 5%;
+    margin-right: 5%;
     margin-top: 30px;
 }
 
@@ -16,6 +17,28 @@ body li {
 
 body button {
     front-size: 20px;
+}
+
+.text-left {
+    margin-left: 4%;
+    padding: 1%;
+}
+
+.form-check {
+    margin-left: 5%;
+    font-size: 24px;
+}
+
+.mt-5 {
+    margin-left: 44.5%;
+}
+
+.my-4 .text-200 {
+    margin-left: 35.5%
+}
+
+.my-4 .text-200 .btn-md {
+    margin-left: 12.5%;
 }
 
 .btn-info {

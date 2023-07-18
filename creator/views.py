@@ -1,6 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
-from django.contrib.auth.decorators import login_required
 from django.db.models import F
 from .models import Quiz, Question, Answer, Choice, Result
 from .forms import QuizForm, QuestionForm, AnswerForm
