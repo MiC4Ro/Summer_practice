@@ -4,15 +4,16 @@
 
 {% block body %}
     <div>
-        {% csrf_token %}
         <h1>{{ quiz.name }}</h1>
-        <form id="question-form"
-              method="post">
-            {% for quiz in quizzes %}
+        <a href="{% url 'add-question' %}"><button class="btn btn-danger">Добавить ответ</button></a>
+        <div>
+            {% for i in questions %}
+            {% if quiz.id == i.quiz_id %}
             <button class="btn btn-info">
-                <a href="{{ quiz.id }}"><h2>{{ quizzes.name }}</h2></a>
+                <a href="{% url 'add-answer' %}"><h2>{{ i.name }}</h2></a>
             </button>
+            {% endif %}
         {% endfor %}
-        </form>
+        </div>
     </div>
 {% endblock %}

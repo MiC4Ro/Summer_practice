@@ -8,7 +8,7 @@
 
     {% for quiz in quizzes %}
         <button class="btn btn-info">
-            <a href="{% url '' %}"><h2>{{ quiz.name }}</h2></a>
+            <a href="{{ quiz.id }}"><h2>{{ quiz.name }}</h2></a>
         </button>
     {% endfor %}
 {% endblock %}

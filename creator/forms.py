@@ -10,18 +10,12 @@ class QuizForm(ModelForm):
 class QuestionForm(ModelForm):
     class Meta:
         model = Question
-        fields = ['name', 'qtype', 'explanation']
-
-
-class QuestionForm(ModelForm):
-    class Meta:
-        model = Question
-        fields = ['name', 'qtype', 'explanation']
+        fields = ['name', 'qtype', 'explanation', 'quiz']
 
 class AnswerForm(ModelForm):
     class Meta:
         model = Answer
-        fields = ['name', 'is_correct']
+        fields = ['name', 'is_correct', 'question']
 
 #класс студенты = модел
 # создать много классов для каждой модели.

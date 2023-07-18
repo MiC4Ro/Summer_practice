@@ -132,7 +132,7 @@ def create_question(request):
         form = QuestionForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('add-test')
+            return redirect('add-answer')
         else:
             error = "Форма заполнено неверно."
     form = QuestionForm()
@@ -148,7 +148,7 @@ def create_answer(request):
         form = AnswerForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('add-question')
+            return redirect('add-answer')
         else:
             error = "Форма заполнено неверно."
     form = AnswerForm()
@@ -161,4 +161,6 @@ def create_answer(request):
 class TestDetailView(DetailView):
     model = Quiz
     template_name = 'creator/display-test.html'
+    questions = Question.objects.all()
     context_object_name = 'quiz'
+    extra_context = {'questions': questions}
