@@ -12,13 +12,11 @@
 <body>
     <aside>
         <ul>
-            <a href="student-for-teacher/"><li>Студенты</li></a>
-            <a href="tests-for-teacher/"><li>Тесты</li></a>
+            <a href="{% url 'student-for-teacher' %}"><li>Студенты</li></a>
+            <a href="{% url 'tests-for-teacher' %}"><li>Тесты</li></a>
         </ul>
     </aside>
 </body>
-<main>
-    {% block body %}
-    {% endblock %}
-</main>
+{% block body %}
+{% endblock %}
 </html>
