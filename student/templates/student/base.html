@@ -3,10 +3,10 @@
 {% block title %}Мои программы{% endblock %}
 
 {% block body %}
-    <h1 class="students_programms">Список программ:</h1><br>
+    <h1 class="students_programms">Список тестов:</h1><br>
     <ul>
-        {% for i in a %}
-            <a href="/student/"><li><button class="btn btn-info">{{ i }}</button></li></a>
+        {% for i in quizzes %}
+            <a href="{{ i.id }}"><button class="btn btn-info"><li>{{ i }}</li></button></a>
         {% endfor %}
     </ul>
 {% endblock %}

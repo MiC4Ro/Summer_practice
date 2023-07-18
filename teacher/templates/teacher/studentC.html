@@ -1,0 +1,17 @@
+{% extends 'teacher/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<h2>Студенты</h2>
+
+<a href="{% url 'add-student' %}"><button class="add_button_student">добавить студента </button></a>
+
+    <div>
+        {% for el in student %}
+        <div class="list list-warning">
+            <button>{{ el.name }} {{ el.last_name }}</button>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

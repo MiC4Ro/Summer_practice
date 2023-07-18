@@ -1,0 +1,14 @@
+{% extends 'teacher/layout.html' %}
+
+
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block body %}
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button>создать студента</button>
+    <span>{{ error }}</span>
+</form>
+{% endblock %}

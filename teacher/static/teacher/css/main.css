@@ -1,0 +1,56 @@
+body {
+    background: white
+}
+
+aside {
+    float: left;
+    background: gray;
+    width: 5%;
+    padding: 2.5%;
+    height: 91vh;
+    color: black;
+    margin-left: -50px;
+    margin-top: -30px;
+}
+
+aside ul {list-style: none}
+aside ul li {
+    color: #fff;
+    display: block;
+    margin-top: 23px;
+    transition: transform .6s;
+}
+
+aside ul li:hover, aside ul a:hover {
+    color: #eb5959;
+    text-decoration: none;
+    transform: scale(1.5);
+}
+
+aside a {text-decoration: none;}
+
+h2 {
+    margin-left: 35%;
+    font-size: 40px;
+}
+
+button {
+    margin-left: 15%;
+    font-size: 25px;
+    border: none;
+    margin-top: 10px;
+    background: none;
+    display: block;
+    margin-top: 20px;
+    transition: transform .6s;
+}
+
+button:hover {
+    color: #eb5959;
+    text-decoration: none;
+    transform: scale(1.1);
+}
+
+.add_button_student{
+    margin-left: 80%;
+}

@@ -1,0 +1,12 @@
+{% extends 'teacher/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<h2>Тесты</h2>
+        {% for el in tests %}
+        <div class="testiki testiki-warning">
+            <button>{{ el.name }}</button>
+        </div>
+        {% endfor %}
+{% endblock %}
